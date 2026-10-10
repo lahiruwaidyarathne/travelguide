@@ -672,11 +672,70 @@ ul {
 }
 
 /* ==========================================================================
+   CALCULATOR & FORM COMPONENTS
+   ========================================================================== */
+.calculator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 14px;
+  align-items: end;
+  width: 100%;
+}
+
+.calc-field {
+  min-width: 0;
+  width: 100%;
+}
+
+.calc-result-box {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: #f0f9ff;
+  border-radius: var(--radius-sm);
+  border-left: 4px solid #0284c7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.calc-field .form-control {
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.calc-submit-btn {
+  height: 44px;
+  width: 100%;
+  min-width: 130px;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
+@media (max-width: 1024px) {
+  .calculator-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .calc-action {
+    grid-column: span 2;
+  }
+}
+
 @media (max-width: 992px) {
   .mobile-nav-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
   }
 
   .nav-links {
@@ -687,10 +746,11 @@ ul {
     left: 0;
     right: 0;
     background: white;
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border-bottom: 1px solid #e2e8f0;
-    gap: 12px;
+    padding: 20px 24px 24px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+    border-bottom: 2px solid #0284c7;
+    gap: 10px;
+    z-index: 1000;
   }
 
   .nav-links.show {
@@ -698,6 +758,72 @@ ul {
   }
 
   .card-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 }
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .page-hero {
+    padding: 38px 0 32px;
+  }
+
+  .page-hero h1 {
+    font-size: 26px;
+  }
+
+  .page-hero p {
+    font-size: 14px;
+  }
+
+  .filter-search-section {
+    margin: -18px auto 28px;
+  }
+
+  .filter-card {
+    padding: 16px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .calculator-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .calc-action {
+    grid-column: span 1;
+  }
+
+  .calc-submit-btn {
+    height: 46px;
+    font-size: 15px;
+    width: 100%;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .filter-pills {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-pill {
+    white-space: nowrap;
+    font-size: 12.5px;
+    padding: 6px 14px;
+  }
+
+  .modal-content {
+    padding: 22px 18px;
+  }
+}
+
