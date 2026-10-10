@@ -907,6 +907,27 @@
     }
 
     /* ==========================================================================
+    /* Mobile Navigation Toggle Button */
+    .mobile-nav-toggle {
+      display: none;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      font-size: 19px;
+      color: #1e293b;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .mobile-nav-toggle:hover {
+      background: #e2e8f0;
+      color: #0284c7;
+    }
+
+    /* ==========================================================================
        Responsive Media Queries
        ========================================================================== */
     @media (max-width: 1100px) {
@@ -918,6 +939,54 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .mobile-nav-toggle {
+        display: flex;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        padding: 20px 24px 24px;
+        box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+        border-bottom: 2px solid #0284c7;
+        gap: 10px;
+        z-index: 1000;
+      }
+      .nav-links.show {
+        display: flex;
+        animation: slideDown 0.25s ease forwards;
+      }
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .nav-links a {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 15px;
+      }
+      .nav-links a.active::after {
+        display: none;
+      }
+      .nav-cta {
+        margin-top: 6px;
+        text-align: center;
+        justify-content: center;
+      }
+      .gallery-grid {
+        gap: 16px;
+      }
+      .g-col-4, .g-col-6 {
+        grid-column: span 6;
       }
     }
 
@@ -938,20 +1007,47 @@
         grid-column: span 2;
         grid-template-columns: 1fr;
       }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
+      }
+      .page-preview {
+        padding: 24px 0 40px;
+      }
+      .intro-text-box {
+        padding: 20px 18px;
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
       .g-col-4, .g-col-6 {
         grid-column: span 12;
       }
       .gallery-card {
-        height: 220px;
+        height: 200px;
       }
-    }
-
-    @media (max-width: 640px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
+      .gallery-card .card-caption {
+        padding: 14px 12px;
       }
-      .footer-brand, .footer-col-support {
-        grid-column: span 1;
+      .gallery-card .card-caption h4 {
+        font-size: 16px;
+      }
+      .gallery-card .card-caption p {
+        font-size: 12px;
+      }
+      .newsletter-card {
+        padding: 22px 18px;
+      }
+      .newsletter-content h3 {
+        font-size: 20px;
+      }
+      .newsletter-content p {
+        font-size: 13.5px;
+      }
+      .newsletter-perks {
+        flex-direction: column;
+        gap: 8px;
       }
       .newsletter-form {
         flex-direction: column;
@@ -959,6 +1055,14 @@
       .newsletter-btn {
         padding: 14px;
         justify-content: center;
+        width: 100%;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .footer-brand, .footer-col-support {
+        grid-column: span 1;
       }
       .footer-bottom-container {
         flex-direction: column;
@@ -967,12 +1071,15 @@
       }
       .legal-links {
         justify-content: center;
+        gap: 12px;
       }
       .footer-selectors {
         justify-content: center;
+        width: 100%;
       }
-      .nav-links {
-        display: none; /* mobile navigation toggle can be added */
+      .selector-btn {
+        flex: 1;
+        justify-content: center;
       }
     }
   </style>
@@ -982,7 +1089,7 @@
   <!-- Website Header (TravelGuide.lk) -->
   <header class="top-nav">
     <div class="container nav-container">
-      <a href="#" class="logo-container">
+      <a href="index.html" class="logo-container">
         <div class="logo-badge">
           <i class="fa-solid fa-plane-departure"></i>
         </div>
@@ -991,7 +1098,12 @@
         </div>
       </a>
       
-      <nav class="nav-links">
+      <!-- Mobile Navigation Hamburger Toggle -->
+      <button class="mobile-nav-toggle" id="mobile-toggle" onclick="toggleMobileNav()" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="nav-links" id="nav-links">
         <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a>
         <a href="hotels.html"><i class="fa-solid fa-hotel"></i> Hotels</a>
         <a href="transport.html"><i class="fa-solid fa-car-side"></i> Transport</a>
@@ -1313,6 +1425,14 @@
   </div>
 
   <script>
+    // Toggle Mobile Navigation Drawer
+    function toggleMobileNav() {
+      const navLinks = document.getElementById('nav-links');
+      if (navLinks) {
+        navLinks.classList.toggle('show');
+      }
+    }
+
     // Set dynamic current year
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
