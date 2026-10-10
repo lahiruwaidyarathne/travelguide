@@ -599,6 +599,9 @@
 }
 
 @media (max-width: 900px) {
+  .footer-newsletter-wrap {
+    padding: 36px 0 28px;
+  }
   .newsletter-card {
     grid-template-columns: 1fr;
     padding: 28px 24px;
@@ -618,11 +621,31 @@
 }
 
 @media (max-width: 640px) {
+  .travel-footer-container {
+    padding: 0 16px;
+  }
+  .footer-main {
+    padding: 40px 0 32px;
+  }
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
   .footer-brand, .footer-col-support {
     grid-column: span 1;
+  }
+  .newsletter-card {
+    padding: 22px 18px;
+  }
+  .newsletter-content h3 {
+    font-size: 20px;
+  }
+  .newsletter-content p {
+    font-size: 13.5px;
+  }
+  .newsletter-perks {
+    flex-direction: column;
+    gap: 8px;
   }
   .newsletter-form {
     flex-direction: column;
@@ -630,13 +653,33 @@
   .newsletter-btn {
     padding: 14px;
     justify-content: center;
+    width: 100%;
+  }
+  .footer-links a {
+    padding: 6px 0;
+    display: inline-flex;
+    align-items: center;
+  }
+  .footer-bottom {
+    padding: 20px 0;
   }
   .footer-bottom-container {
     flex-direction: column;
     text-align: center;
     gap: 16px;
   }
-  .legal-links, .footer-selectors {
+  .legal-links {
+    justify-content: center;
+    gap: 12px;
+  }
+  .footer-selectors {
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .selector-btn {
+    flex: 1;
+    min-width: 130px;
     justify-content: center;
   }
 }
