@@ -66,9 +66,9 @@
         <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; margin-bottom: 14px; color: #0f172a;">
           <i class="fa-solid fa-calculator" style="color: #0284c7;"></i> Quick Route & Travel Time Calculator
         </h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) 120px; gap: 14px; align-items: end;">
-          <div>
-            <label class="form-label">Starting From</label>
+        <div class="calculator-grid">
+          <div class="calc-field">
+            <label class="form-label"><i class="fa-solid fa-location-dot" style="color: #0284c7;"></i> Starting From</label>
             <select class="form-control" id="calc-origin" onchange="calculateRoute()">
               <option value="cmb">Bandaranaike Airport (CMB)</option>
               <option value="colombo">Colombo City</option>
@@ -77,8 +77,8 @@
               <option value="bentota">Bentota Beach</option>
             </select>
           </div>
-          <div>
-            <label class="form-label">Destination</label>
+          <div class="calc-field">
+            <label class="form-label"><i class="fa-solid fa-map-pin" style="color: #ef4444;"></i> Destination</label>
             <select class="form-control" id="calc-destination" onchange="calculateRoute()">
               <option value="kandy">Kandy (Cultural Capital)</option>
               <option value="ella">Ella (Tea Valleys)</option>
@@ -87,20 +87,22 @@
               <option value="yala">Yala Safari Park</option>
             </select>
           </div>
-          <div>
-            <label class="form-label">Vehicle Type</label>
+          <div class="calc-field">
+            <label class="form-label"><i class="fa-solid fa-car-side" style="color: #059669;"></i> Vehicle Type</label>
             <select class="form-control" id="calc-vehicle" onchange="calculateRoute()">
               <option value="sedan">Comfort Sedan (1-3 Pax)</option>
               <option value="van">Luxury Van (4-8 Pax)</option>
               <option value="train">Scenic 1st Class Train</option>
             </select>
           </div>
-          <button class="btn-primary" onclick="calculateRoute()" style="height: 44px; justify-content: center;">
-            Calculate
-          </button>
+          <div class="calc-action">
+            <button class="btn-primary calc-submit-btn" onclick="calculateRoute()">
+              <i class="fa-solid fa-calculator"></i> Calculate
+            </button>
+          </div>
         </div>
 
-        <div id="calc-result" style="margin-top: 16px; padding: 12px 18px; background: #f0f9ff; border-radius: 8px; border-left: 4px solid #0284c7; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div id="calc-result" class="calc-result-box">
           <div>
             <span style="font-weight: 700; color: #0f172a;" id="res-distance">Distance: 115 km</span> &bull; 
             <span style="color: #475569;" id="res-time">Approx Duration: 2.5 - 3 Hours</span>
